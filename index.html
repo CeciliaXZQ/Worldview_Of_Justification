@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" href="d3.parcoords.css"/>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+        <!-- <link rel="stylesheet" type="text/css" href="evaluationChart.css"/> -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+        <title>IVIS Project 1: Visualize Student Group Formation</title>
+    </head>
+    <style>
+        .row > div{
+          /* background:#eee; */
+          padding:1em;
+        }
+
+        #countryTable{
+            height: 500px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+    
+      </style>
+
+    <body class="bg-light">
+        <div id="header">
+            <h2>IVIS Project 2: Visualizing the World</h2>
+        </div>
+			
+		<h4>How people from each country think the justifiability of certain action:</h4>
+		<h5>(Mean value, Scale: 0 ~ 10)</h5>
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-sm-10">
+                        <div id="vis" class="parcoords col-12"></div>
+                </div>
+                <div id="countryTable" class="col-sm-2"></div>
+            </div>
+        </div>
+
+        <script src="https://d3js.org/d3.v3.min.js"></script>
+        <script src="d3.parcoords.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
+
