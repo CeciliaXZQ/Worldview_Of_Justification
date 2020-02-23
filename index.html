@@ -3,20 +3,22 @@
     <head>
         <meta charset="utf-8">
         <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
         <link rel="stylesheet" type="text/css" href="d3.parcoords.css"/>
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
         <!-- <link rel="stylesheet" type="text/css" href="evaluationChart.css"/> -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+        <!-- <script src="https://stackpath.bootstrapcdn.com/bootst?rap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+		<script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+		<script src="https://datamaps.github.io/scripts/datamaps.world.min.js"></script>
+		<!-- <script src="http://datamaps.github.io/scripts/datamaps.usa.min.js"></script> -->
 
         <title>IVIS Project 2: Visualizing the World</title>
     </head>
@@ -36,19 +38,74 @@
 
     <body class="bg-light">
         <div id="header">
-            <h2>IVIS Project 2: Visualizing the World</h2>
-        </div>
+            <h1>IVIS Project 2: Visualizing the World</h1>
+		</div>
+		
+
 			
-		<h4>How people from each country think the justifiability of certain action:</h4>
-		<h5>(Mean value, Scale: 0 ~ 10)</h5>
         <div class="container mt-3">
+			<div class="row">
+			<h5 style="padding-top: 20px;">Please select time period: </h5>
+			<div class="dropdown">
+				<button class="btn btn-info dropdown-toggle" type="button" id="dropdownButtonTime" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  Time Periods
+				</button>
+				<div class="dropdown-menu" id="time" aria-labelledby="dropdownMenuButton">
+				  <button class="dropdown-item" type="button" onclick="show9599()">1995 - 1999</button>
+				  <button class="dropdown-item" type="button" onclick="show0004()">2000 - 2004</button>
+				  <button class="dropdown-item" type="button" onclick="show0509()">2005 - 2009</button>
+				  <button class="dropdown-item" type="button" onclick="show1014()">2010 - 2014</button>
+				</div>
+			  </div>
+			</div>
+			<div class="row">
+			<h5 style="padding-top: 20px;">Please select topic presented on World Map: </h5>
+			<div class="dropdown">
+				<button class="btn btn-info dropdown-toggle" type="button" id="dropdownButtonTopic" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  Topics
+				</button>
+				<div class="dropdown-menu" id="topic" aria-labelledby="dropdownMenuButton">
+				  <button class="dropdown-item" type="button" onclick="changeTopic('murder')">Murder</button>
+				  <button class="dropdown-item" type="button" onclick="changeTopic('demo')">Democracy</button>
+				  <button class="dropdown-item" type="button" onclick="changeTopic('gini')">Gini</button>
+				  <button class="dropdown-item" type="button" onclick="changeTopic('hdi')">HDI</button>
+				  <button class="dropdown-item" type="button" onclick="changeTopic('corr')">Corruption</button>
+				  <button class="dropdown-item" type="button" onclick="changeTopic('fe')">Female Education</button>
+				</div>
+			  </div>
+		  </div>
+			  
+			<div id="map">
+
+				<!-- <h2><span id="dataname"></span> in year <span id="currentYear"></span></h2> -->
+			
+				<div id="container" style="position: relative; width: 1000px; height: 500px;"></div>
+				<div id="label-wrapper" style="padding-left: 20px;">
+					<div class="label">
+						<div class="box" id="green-box"></div>
+						<h5 class="label-text">Low</h5>
+					</div>
+					<div class="label">
+						<div class="box" id="yellow-box"></div>
+						<h5 class="label-text">Medium</h5>
+					</div>
+					<div class="label">
+						<div class="box" id="red-box"></div>
+						<h5 class="label-text">High</h5>
+					</div>
+				</div>	
+			</div>
+			<div class="tableSection mt-5">
+			<h4>How people from each country think the justifiability of certain action:</h4>
+			<h5>(Mean value, Scale: 0 ~ 10)</h5>
             <div class="row">
                 <div class="col-sm-10">
                         <div id="vis" class="parcoords col-12"></div>
                 </div>
                 <div id="countryTable" class="col-sm-2"></div>
             </div>
-        </div>
+		</div>
+	</div>
 
         <script src="https://d3js.org/d3.v3.min.js"></script>
         <script src="d3.parcoords.js"></script>

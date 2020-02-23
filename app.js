@@ -1,13 +1,76 @@
 var year = "year1014";
 var selectedCountries = [];
-var data = 'happiness'
+var data = 'murder'
 var set = null;
 var line = null;
 var activeBrush = false;
 //Data for IVIS20 Project 1.csv
 
+$('#time button').click(function(e){
+	e.preventDefault(); // cancel the link behaviour
+	var selText = $(this).text();
+	$("#dropdownButtonTime").text(selText);
+});
+$('#topic button').click(function(e){
+	e.preventDefault(); // cancel the link behaviour
+	var selText = $(this).text();
+	$("#dropdownButtonTopic").text(selText);
+});
 
-d3.csv('data/justifiable_0509.csv', function(dataset) {
+function changeTopic(freetext){
+	data=freetext;
+}
+
+function show9599() {
+	$("#container").empty();
+	$("#vis").empty();
+	year = "year9599";
+  currentYear = "1995 - 1999";
+	createChart("data/justifiable_9599.csv")
+	if(data=="murder"){
+		createMap("Murder_w1.csv");
+	}else if(data=="demo"){
+
+	}else if(data=="gini"){
+
+	}else if(data=="hdi"){
+
+	}else if(data=="corr"){
+
+	}else if(data=="fe"){
+
+	}
+	// changeData(data);
+}
+
+function show0004() {
+	$("#vis").empty();
+	year = "year0004";
+  currentYear = "2000 - 2004";
+	createChart("data/justifiable_0004.csv")
+	// changeData(data);
+}
+
+function show0509() {
+	$("#vis").empty();
+	year = "year0509";
+  currentYear = "2005 - 2009";
+	createChart("data/justifiable_0509.csv")
+  changeData(data);
+}
+
+function show1014() {
+	$("#vis").empty();
+	year = "year1014";
+  currentYear = "2010 - 2014";
+	createChart("data/justifiable_1014.csv")
+  changeData(data);
+}
+
+
+/********* Parallel Coordinates Table *********/
+function createChart(file) {
+d3.csv(file, function(dataset) {
     //Load data and map it
     var data = d3.entries(dataset).map(function(d) {
         var val = d.value;
@@ -83,3 +146,32 @@ d3.csv('data/justifiable_0509.csv', function(dataset) {
 
     
 });
+}
+
+/********* Map Visualization *********/
+function createMap(file){
+		map = new Datamap({
+			element: document.getElementById('container'),
+			geographyConfig: {
+					 highlightOnHover: true,
+					 popupOnHover: true,
+					 highlightFillColor: 'feauturenotabug',
+				 highlightBorderColor: 'rgba(100, 100, 100, 0.8)',
+				 },
+			fills: {
+				Low: '#4CAF50',
+				High: '#F44336',
+				Mid: '#FFEB3B',
+				UNKNOWN: 'rgb(0,0,0)',
+				defaultFill: '#DCEDC1'
+			},
+			dataUrl: file,
+            dataType: 'csv',
+			data: {
+			}
+		});	    		
+	}
+
+
+// createMap();
+show1014();
