@@ -48,7 +48,7 @@
 			<h5 style="padding-top: 20px;">Please select time period: </h5>
 			<div class="dropdown">
 				<button class="btn btn-info dropdown-toggle" type="button" id="dropdownButtonTime" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				  Time Periods
+					2010 - 2014
 				</button>
 				<div class="dropdown-menu" id="time" aria-labelledby="dropdownMenuButton">
 				  <button class="dropdown-item" type="button" onclick="show9599()">1995 - 1999</button>
@@ -57,22 +57,24 @@
 				  <button class="dropdown-item" type="button" onclick="show1014()">2010 - 2014</button>
 				</div>
 			  </div>
-			</div>
-			<div class="row">
-			<h5 style="padding-top: 20px;">Please select topic presented on World Map: </h5>
-			<div class="dropdown">
-				<button class="btn btn-info dropdown-toggle" type="button" id="dropdownButtonTopic" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				  Topics
-				</button>
-				<div class="dropdown-menu" id="topic" aria-labelledby="dropdownMenuButton">
-				  <button class="dropdown-item" type="button" onclick="changeTopic('murder')">Murder</button>
-				  <button class="dropdown-item" type="button" onclick="changeTopic('demo')">Democracy</button>
-				  <button class="dropdown-item" type="button" onclick="changeTopic('gini')">Gini</button>
-				  <button class="dropdown-item" type="button" onclick="changeTopic('hdi')">HDI</button>
-				  <button class="dropdown-item" type="button" onclick="changeTopic('corr')">Corruption</button>
-				  <button class="dropdown-item" type="button" onclick="changeTopic('fe')">Female Education</button>
+			  <h5 style="padding-top: 20px;padding-left: 50px;">Please select topic presented on World Map: </h5>
+			  <div class="dropdown">
+				  <button class="btn btn-info dropdown-toggle" type="button" id="dropdownButtonTopic" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					HDI
+				  </button>
+				  <div class="dropdown-menu" id="topic" aria-labelledby="dropdownMenuButton">
+					<button class="dropdown-item" type="button" onclick="changeTopic('murder')">Murder</button>
+					<button class="dropdown-item" type="button" onclick="changeTopic('demo')">Democracy</button>
+					<button class="dropdown-item" type="button" onclick="changeTopic('gini')">Gini</button>
+					<button class="dropdown-item" type="button" onclick="changeTopic('hdi')">HDI</button>
+					<button class="dropdown-item" type="button" onclick="changeTopic('corr')">Absence of Corruption</button>
+					<button class="dropdown-item" type="button" onclick="changeTopic('fe')">Female Education</button>
+				  </div>
 				</div>
-			  </div>
+			</div>
+			<!-- <div class="row"> -->
+			<div>
+				<p id="intro"><strong>Human Development Index (HDI):</strong> A statistic composite index of life expectancy, education, and per capita income indicators, which are used to rank countries into four tiers of human development. A country scores a higher HDI when the lifespan is higher, the education level is higher, and the gross national income GNI (PPP) per capita is higher.</p>
 		  </div>
 			  
 			<div id="map">
@@ -83,29 +85,69 @@
 				<div id="label-wrapper" style="padding-left: 20px;">
 					<div class="label">
 						<div class="box" id="green-box"></div>
-						<h5 class="label-text">Low</h5>
+						<h5 class="label-text" id="low">Low</h5>
 					</div>
 					<div class="label">
 						<div class="box" id="yellow-box"></div>
-						<h5 class="label-text">Medium</h5>
+						<h5 class="label-text" id="med">Medium</h5>
 					</div>
 					<div class="label">
 						<div class="box" id="red-box"></div>
-						<h5 class="label-text">High</h5>
+						<h5 class="label-text" id="high">High</h5>
 					</div>
 				</div>	
 			</div>
 			<div class="tableSection mt-5">
 			<h4>How people from each country think the justifiability of certain action:</h4>
 			<h5>(Mean value, Scale: 0 ~ 10)</h5>
+			<p>(Domes.Vio = Domestic violence; Gov.Benefit = Claiming government benefits to which you are not entitled; Taxes = Cheat on taxes)</p>
             <div class="row">
                 <div class="col-sm-10">
                         <div id="vis" class="parcoords col-12"></div>
                 </div>
                 <div id="countryTable" class="col-sm-2"></div>
-            </div>
+			</div>
 		</div>
-	</div>
+		<div id="dicovery1-wrapper">
+			<h2>Research Question</h2>
+			<h5>A potential interesting research question can be discovering how people from different countries think the justifiability of certain action, and to what extent this kind of justification will influence the general societies. </h5>
+			<h2>Discovery Process with WVS</h2>
+			<h5>In order to study the question, I've selected all countries available for each time period of the WVS dataset, as well as the survey question I am interested in. 
+			</h5>
+			<h5>Here is the example at wave 2010-2014 showing the justifiability of accepting bribe:</h5>
+			<img src="images/image1.png" style="width: 500px" />
+			<img src="images/image2.png" style="width: 500px" />
+			<h5  style="padding-top: 20px;">You have to select all the countries you want to study by clicking.</h5>
+		
+			<img src="images/image3.png" style="width: 500px" />
+			<h5  style="padding-top: 20px;">WVS firstly will present a tabular form of data, the data at this view is very hard to compare and see the trend:</h5>
+			<img src="images/image4.png" style="width: 500px" />
+			<h5 style="padding-top: 20px;">Then you can choose from several graphical representations:</h5>
+			<img src="images/image5.png" style="width: 500px" />
+			<img src="images/image6.png" style="width: 500px" />
+			<h5 style="padding-top: 20px;">However it can be seen that the information is hard to track in these graphical representations when the number of countries is large.</h5>
+			<h5>One can also visualize the data with maps, which is much more clear but it still can not give any comparative result since you can only choose one wave and one survey question.</h5>
+			<img src="images/image7.png" style="width: 500px" />
+			<h5 style="padding-top: 20px;">Regarding this survey question, the level of corruption of countries can be related data from Gapminder. It is presented in various forms, however it would be hard to compare it with the data from WVS.</h5>
+			<img src="images/image8.png" style="width: 500px" />
+			<img src="images/image9.png" style="width: 500px" />
+
+
+			<h2 style="padding-top: 50px;">Discovery Process with my visualisation</h2>
+			<h5>In my visualisation, the first view gives the general world view. The data with six different topics from Gapminder is selectable and is presented into low, medium and high levels with different colors.</h5>
+			<img src="images/image13.png" style="width: 500px" />
+			<h5 style="padding-top: 20px;">Below is a parallel coordinate with all the survey questions as variables. There are more than 40 countries represented by lines. It provides a comparable representation, and one can brush the data to see the interested range of data. One can select from four time waves, from 1950 to 2014, for both map and parallel coordinate visualization </h5>
+			<img src="images/image14.png" style="width: 500px" />
+			<h5 style="padding-top: 20px;">Below is the view from 2010 to 2014, and the absence of corruption is chosen as the topic for the world map.</h5>	
+			<img src="images/image10.png" style="width: 500px" />
+			<img src="images/image11.png" style="width: 500px" />
+			<h5 style="padding-top: 20px;">It can be seen from the map that most countries with corruption problems are in Asia and Africa, while parallel coordination after brushing shows that the top five countries where people think accepting bribes is justifiable are mostly from Asia and Africa. The brushed countries will show at the table to the right, hovering on the name will highlight the line for this country.</h5>
+			<h2 style="padding-top: 50px;">Learning</h2>
+			<h5>In this project, the data set is even large and complicated. Cleaning data manually is very difficult, I have learned to write python scripts to process data.</h5>
+			<h5>I learned how to use datamap library to visualize geographic information together with d3.js. It provides more possibilities for my data visualization.</h5>
+			<h5 style="padding-bottom: 100px;">This project also motivates me to explore the real data and possible visualization of them. I really enjoyed visualizing world data and comparing how different countries have different patterns which can be related to real life fact or history.</h5>
+		</div>
+
 
         <script src="https://d3js.org/d3.v3.min.js"></script>
         <script src="d3.parcoords.js"></script>

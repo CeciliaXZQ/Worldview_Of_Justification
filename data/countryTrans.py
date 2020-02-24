@@ -32,7 +32,7 @@ countries = {}
 for country in pycountry.countries:
     countries[country.name] = country.alpha_3
 
-with open('Murder.csv') as inputFile, open("Murder_w1.csv", mode='w') as outputFile:
+with open('School_women.csv') as inputFile, open("School_women_w1.csv", mode='w') as outputFile:
     writer = csv.writer(outputFile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
     writer.writerow(["id","fillKey"])
     csv_reader = csv.reader(inputFile, delimiter=',')
@@ -44,25 +44,18 @@ with open('Murder.csv') as inputFile, open("Murder_w1.csv", mode='w') as outputF
         else:
             code = countries.get(row[0], 'Unknown code')
             if(row[1]!=""):
-                if (0<float(row[1]))&(float(row[1])<=5):
+                if (5>=float(row[1])):
                     fillKey="Low"
-                elif (5<float(row[1]))&(float(row[1])<=10):
+                elif (5<float(row[1]))&(float(row[1])<=9):
                     fillKey="Mid"
-                elif float(row[1])>10:
+                elif float(row[1])>9:
                     fillKey="High"
                 # writer = csv.writer(outputFile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
                 writer.writerow([code,fillKey])
                 line_count += 1
                     
 
-                #  print(float(row[1]))
             
-            
-   
-
-            # print(f'\t{row[0]} works in the {row[1]} department, and was born in {row[2]}.')
-            
-    # print(f'Processed {line_count} lines.')
 
 
 
